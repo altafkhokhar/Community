@@ -5,15 +5,11 @@ let schema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId
     },
 
-    ragisterNo: {
+    registerNo: {
 
         type: String
     },
 
-    qualification: {
-
-        type: String
-    },
 
     firstName: {
 
@@ -25,6 +21,16 @@ let schema = new mongoose.Schema({
         type: String,
 
     },
+    fatherName:{
+
+        type: String,
+
+
+    },
+    qualification: {
+
+        type: String
+    },
 
     birthDate: {
 
@@ -33,13 +39,10 @@ let schema = new mongoose.Schema({
 
     },  
 
-    
     gender: {
-
         type: String,
-
-
-    },  
+    
+      },
 
     
     email: {

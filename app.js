@@ -6,7 +6,7 @@ var logger = require('morgan');
 var flash = require('connect-flash');
 var session=require('express-session')
 var mongoose=require('mongoose');
-
+var handlebars=require("express-handlebars")
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
@@ -22,6 +22,10 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+
+// app.engine('handlebars',handlebars({defaultLayout:'layout'}))
+// app.set('view engine','handlebars')
 
 
 app.use(logger('dev'));

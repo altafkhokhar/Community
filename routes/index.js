@@ -6,11 +6,17 @@ var person_detail= require("../model/person_detail");
 /* GET home page. */
 router.get('/', function(req, res, next) {
   req.flash('info', 'Flash is back!')
-  res.render('index', { title: 'Express' });
+  res.render('Dashboard');
+});
+
+router.get('/Addlist', function(req, res, next) {
+  req.flash('info', 'Flash is back!')
+  res.render('index');
 });
 
 
-router.post('/submit_data', async function (req, res, next) {
+
+router.post('/Submit_Data', async function (req, res, next) {
   console.log(req.body);
 
   try {
@@ -18,11 +24,12 @@ router.post('/submit_data', async function (req, res, next) {
       await person_detail.Model.create({
 
 
-        ragisterNo:req.body.Ragister_No,
-        qualification:req.body.Qualification,
+          registerNo:req.body.register,
           firstName: req.body.first_name,
           lastName: req.body.last_name,
+          fatherName:req.body.father_name,
           birthDate:req.body.birthday,
+          qualification:req.body.qualification,
           gender:req.body.gender,
           email: req.body.email,
           phoneNumber:req.body.phone,
@@ -31,6 +38,7 @@ router.post('/submit_data', async function (req, res, next) {
 
 
       });
+
       res.render('index');
 
   } catch (err) {
@@ -39,27 +47,59 @@ router.post('/submit_data', async function (req, res, next) {
   }
 });
 
+router.get('/displaylist',async function(req, res, next) {
+  try {
 
-  
+    var all_person={};
 
-
-  // var Person={
-
-  //   first_name:req.body.first_name,
-  //   last_name:req.body.last_name,
-  //   birthday:req.body.birthday,
-  //   gender:req.body.gender,
-  //   email:req.body.email,
-  //   phone:req.body.phone,
-  //   address:req.body.address,
-  //   image:req.body.image,
-
+  var displayperson=person_detail.Model.find({}, function (err, persons) {
     
+    
+     persons.forEach(function (oneperson) {
+       all_person[oneperson._id] = oneperson;
+     });
+ })
+ console.log(all_person);
+  res.render('displaylist',{displayperson:all_person})
+  }
 
-  // }
-  // person_service.create_person(Person);
+catch (err) {
+    console.log(err)
+}1
   
+});
+
+
+router.get('/updateperson/:id', async function (req, res, next) {
   
 
- 
+  try {
+      var updateperson= await person_detail.Model.find({
+          "_id": req.params.id
+      });
+      res.render('Edit_Person',{updateperson: updateperson })
+  }
+  catch (err) {
+      console.log(err)
+  }
+});
+
+
+router.post('/updateperson/:id', async function (req, res, next) {
+  await person_detail.Model.updateOne({
+      _id: req.params.id
+  }, {
+      $set: {
+          registerNo:req.body.register_No,
+          firstName: req.body.first_Name,
+          lastName: req.body.last_Name,
+          fatherName: req.body.father_Name,
+          qualification:req.body.qualification,
+          phoneNumber:req.body.phone_Number,
+          email:req.body.email,
+      }
+  });
+  res.redirect('/displaylist');
+});
+
 module.exports = router;
