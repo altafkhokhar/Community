@@ -6,9 +6,10 @@ var logger = require('morgan');
 var flash = require('connect-flash');
 var session=require('express-session')
 var mongoose=require('mongoose');
-var handlebars=require("express-handlebars")
+var exphbs=require("express-handlebars")
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const { helpers } = require('handlebars');
 
 mongoose.connect('mongodb://localhost:27017/Community',//connect-mongoose
   {
@@ -19,13 +20,24 @@ mongoose.connect('mongodb://localhost:27017/Community',//connect-mongoose
 
 var app = express();
 
-// view engine setup
+// // view engine setup
+// var hbs = exphbs.create({
+//   extname:'hbs',
+//   defaultLayout:'main',
+//   layoutsDir:path.join(__dirname,'views/layouts'),
+//   partialsDir:path.join(__dirname,'views/partials'),
+//   helpers:{
+
+
+
+//   }
+
+// });
+// app.engine('hbs',hbs.engine);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 
-// app.engine('handlebars',handlebars({defaultLayout:'layout'}))
-// app.set('view engine','handlebars')
 
 
 app.use(logger('dev'));

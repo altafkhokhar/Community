@@ -1,113 +1,12 @@
-{{!-- <!DOCTYPE html>
-<html lang="en">
 
-
-
-
-
-
-<head>
-    <style>
-}
-
-        #customers {
-            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-
-            width: 80%;
-            height: 500px;
-
-        }
-
-        #customers td,
-        #customers th {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: center;
-        
-        }
-
-        #customers tr {
-            background-color: #f2f2f2;
-        }
-
-        #customers tr:hover {
-            background-color: #ddd;
-        }
-
-        #customers th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: lightblue;
-            color: black;
-            text-align: center;
-        }
-    </style>
-</head>
-
-<body>
-<h1 style="text-align: center;">List All person</h1>
-
-
-
-    <table id="customers" style="margin-left:9em;">
-        <tr>
-            <th>register No</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Father Name</th>
-            <th>Qualification</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-            <th>Edit</th>
-            <th>delete</th>
-            
-        </tr>
-        {{#each displayperson}}
-        <tr>
-            <td>{{registerNo}}</td>
-            <td>{{firstName}}</td>
-            <td>{{lastName}}</td>
-            <td>{{fatherName}}</td>
-            <td>{{qualification}}</td>
-            <td>{{phoneNumber}}</td>
-            
-            <td>{{email}}</td>
-            <td>
-                {{!-- <a href="/updateperson/{{_id}}"> Edit</a> --}}
-        {{!-- <a href="/updateperson/{{_id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-            </td>
-            <td>
-                
-              <a href="/deleteperson/{{_id}}"><i class="fa fa-trash" aria-hidden="true"></i></a>  
-            </td>
-        </tr>
-        {{/each}}
-        <tr>
-            <td colspan="9" style="background-color: lightblue">
-               
-            </td>
-
-        </tr>
-
-
-    </table>
-</body> --}}
-{{!-- 
-
-
- <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-
-</html> --}}
 <!doctype html>
 <html lang="en">
   <head>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -119,6 +18,7 @@
   </head>
   <body>
     
+
    
     <table class="table">
        <div>
@@ -158,9 +58,33 @@
             </td>
             <td>
                 
-              <a href="/deleteperson/{{_id}}"><i class="fa fa-trash" aria-hidden="true"></i></a>  
+              <a ><i class="fa fa-trash" data-toggle="modal"data-target="#exampleModal" aria-hidden="true"></i></a>  
             </td>
+            
     </tr>
+
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      Are you sure ?
+      </div>
+      <div class="modal-footer">
+        <a href="/deleteperson/{{_id}}"><button type="button" class="btn btn-secondary">Delete</button></a>
+        <button type="button" class ="btn btn-primary"data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
     {{/each}}
      <tr>
             <td colspan="9" style="background-color:black;">
@@ -170,12 +94,6 @@
         </tr>
   </tbody>
 </table>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   </body>
 </html>

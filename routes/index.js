@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-// var person_service = require("../service/person_service");
 var person_detail= require("../model/person_detail");
+var mongoose = require("mongoose");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -52,7 +52,7 @@ router.get('/displaylist',async function(req, res, next) {
 
     var all_person={};
 
-  var displayperson=person_detail.Model.find({}, function (err, persons) {
+  person_detail.Model.find({}, function (err, persons) {
     
     
      persons.forEach(function (oneperson) {
@@ -65,7 +65,7 @@ router.get('/displaylist',async function(req, res, next) {
 
 catch (err) {
     console.log(err)
-}1
+}
   
 });
 
@@ -102,4 +102,18 @@ router.post('/updateperson/:id', async function (req, res, next) {
   res.redirect('/displaylist');
 });
 
+
+router.get('/deleteperson/:idd', async function (req, res, next) {
+  console.log("indelete");
+
+  try {
+      await person_detail.Model.deleteOne({
+          "_id": mongoose.Types.ObjectId(req.params.idd)
+      });
+      res.redirect('/displaylist')
+  }
+  catch (err) {
+      console.log(err)
+  }
+});
 module.exports = router;
