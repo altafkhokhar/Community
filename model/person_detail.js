@@ -67,6 +67,11 @@ let schema = new mongoose.Schema({
 
 
     },
+    img: 
+    { 
+        data: Buffer, 
+        contentType: String 
+    } ,
     pictureName:{
 
         type: String,
