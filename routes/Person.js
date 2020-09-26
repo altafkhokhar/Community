@@ -4,7 +4,6 @@ var router = express.Router();
 var person_detail = require("../model/person_detail");
 var mongoose = require("mongoose");
 var fs = require("fs");
-var path = require("path");
 var multer = require("multer");
 
 var storage = multer.diskStorage({
@@ -36,28 +35,42 @@ router.post("/Submit_Data", upload.single("image"), async function (
   res,
   next
 ) {
-  try {
-    await person_detail.Model.create({
+  if (req.body.register) {
+    var checkRegisterd = await person_detail.Model.findOne({
       registerNo: req.body.register,
-      firstName: req.body.first_name,
-      lastName: req.body.last_name,
-      fatherName: req.body.father_name,
-      birthDate: req.body.birthday,
-      qualification: req.body.qualification,
-      gender: req.body.gender,
-      email: req.body.email,
-      phoneNumber: req.body.phone,
-      address: req.body.address,
-
-      img: {
-        data: fs.readFileSync("uploads/" + req.file.filename),
-        contentType: "image/jpeg",
-      },
     });
-    res.render("Add_Person");
-  } catch (err) {
-    res.redirect("error");
-    console.log(err);
+  }
+  if (checkRegisterd) {
+    req.flash("info", "Registered Already !!!");
+
+    res.redirect("/Addlist");
+  } else {
+    try {
+      {
+        await person_detail.Model.create({
+          registerNo: req.body.register,
+          firstName: req.body.first_name,
+          lastName: req.body.last_name,
+          fatherName: req.body.father_name,
+          birthDate: req.body.birthday,
+          qualification: req.body.qualification,
+          gender: req.body.gender,
+          email: req.body.email,
+          phoneNumber: req.body.phone,
+          address: req.body.address,
+
+          img: {
+            data: fs.readFileSync("uploads/" + req.file.filename),
+            contentType: "image/jpeg",
+          },
+        });
+      }
+      console.log("alredy exist");
+      res.render("Add_Person");
+    } catch (err) {
+      res.redirect("error");
+      console.log(err);
+    }
   }
 });
 
