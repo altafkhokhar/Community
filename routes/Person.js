@@ -41,7 +41,7 @@ router.post("/Submit_Data", upload.single("image"), async function (
     });
   }
   if (checkRegisterd) {
-    req.flash("info", "Registered Already !!!");
+    req.flash("info", "Register No. Already Exists!!!");
 
     res.redirect("/Addlist");
   } else {

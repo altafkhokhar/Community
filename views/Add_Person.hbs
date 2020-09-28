@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -41,15 +41,15 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">first name</label>
-                                    <input class="input--style-4" type="text" id="f_name" name="first_name" required>
+                                    <input class="input--style-4" type="text" id="f_name" name="first_name" tabindex="1" required>
                                 </div>
                                 <div class="input-group">
                                     <label class="label">Father name</label>
-                                    <input class="input--style-4" type="text" id="f_name" name="father_name" required>
+                                    <input class="input--style-4" type="text" id="f_name" name="father_name"tabindex="3" required>
                                 </div>
                                 <div class="input-group">
                                     <label class="label">Qualification</label>
-                                    <input class="input--style-4" type="text" id="f_name" name="qualification" required>
+                                    <input class="input--style-4" type="text" id="f_name" name="qualification" tabindex="5" required>
                                 </div>
 
 
@@ -59,11 +59,11 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">last name</label>
-                                    <input class="input--style-4" type="text" name="last_name" required>
+                                    <input class="input--style-4" type="text" name="last_name" tabindex="2" required>
                                 </div>
                                 <div class="input-group">
-                                    <label class="label">Register_No</label>
-                                    <input class="input--style-4" type="text" id="f_name" name="register" required>
+                                    <label class="label">Register No</label>
+                                    <input class="input--style-4" type="number" id="f_name" name="register" tabindex="4" required>
 
 
                                     <label style="color:red;">{{message}}</label>
@@ -102,13 +102,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Email</label>
-                                    <input class="input--style-4" type="email" name="email" required>
+                                    <input class="input--style-4" type="email" name="email">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Phone Number</label>
-                                    <input class="input--style-4" type="number" name="phone" required>
+                                    <label class="label">Mobile</label>
+                                    <input class="input--style-4" type="number" name="phone" onkeypress="if (this.value.length == 10) return false;" required/>
                                 </div>
                             </div>
 
@@ -124,18 +124,14 @@
                                     <input class="input--style-4" type="file" name="image" id="image" value="" required>
                                 </div>
                             </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Pic name</label>
-                                    <input class="input--style-4" type="text" name="pic_Name">
-                                </div>
-                            </div>
+                           
+                            
                         </div>
 
 
 
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                            <button class="btn btn--radius-2 btn--blue" type="submit" onkeypress="if (this.value.length == 10) return false;">Submit</button>
                         </div>
                     </form>
                 </div>
