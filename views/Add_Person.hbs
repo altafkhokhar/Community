@@ -10,26 +10,34 @@
     <meta name="author" content="Colorlib">
     <meta name="keywords" content="Colorlib Templates">
 
-    
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
     <link href="/stylesheets/style.css" rel="stylesheet" media="all">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 </head>
 
-<body>
+<body style="background-color:burlywood;">
 
-    <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+    <div class="page-wrappe">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
-                <div class="card-body">
-                    <h2 class="title">Personal_Info</h2>
+                <div class="card-body" style="background-color: lightgray;">
+                    <h2 class="title" style="text-align: center;">Personal_Info</h2>
                     <form method="POST" action="/Submit_Data" enctype="multipart/form-data">
-                        <div class="row row-space">
-                           
+                        <div class="row row-space bg-dark">
+
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">first name</label>
@@ -39,14 +47,14 @@
                                     <label class="label">Father name</label>
                                     <input class="input--style-4" type="text" id="f_name" name="father_name" required>
                                 </div>
-                                  <div class="input-group">
+                                <div class="input-group">
                                     <label class="label">Qualification</label>
                                     <input class="input--style-4" type="text" id="f_name" name="qualification" required>
                                 </div>
-                
-                
 
-                                    
+
+
+
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
@@ -54,9 +62,11 @@
                                     <input class="input--style-4" type="text" name="last_name" required>
                                 </div>
                                 <div class="input-group">
-                                        <label class="label">Register_No</label>
-                                        <input class="input--style-4" type="text" id="f_name" name="register" required>
-                                    </div>
+                                    <label class="label">Register_No</label>
+                                    <input class="input--style-4" type="text" id="f_name" name="register" required>
+                                    <label id="snackbar" style="color:red;">{{message}}</label>
+
+                                </div>
                             </div>
                         </div>
                         <div class="row row-space">
@@ -105,13 +115,13 @@
                                     <textarea class="input--style-4" name="address"> </textarea>
                                 </div>
                             </div>
-                               <div class="col-2">
+                            <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">image</label>
                                     <input class="input--style-4" type="file" name="image" id="image" value="" required>
                                 </div>
                             </div>
-                                <div class="col-2">
+                            <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Pic name</label>
                                     <input class="input--style-4" type="text" name="pic_Name">
@@ -119,16 +129,15 @@
                             </div>
                         </div>
 
-                      
-                        
+
+
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
                         </div>
                     </form>
                 </div>
+
 </body>
 
-  
+
 </html>
-
-
