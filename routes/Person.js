@@ -4,8 +4,10 @@ var router = express.Router();
 var person_detail = require("../model/person_detail");
 var mongoose = require("mongoose");
 var fs = require("fs");
-var path = require("path");
 var multer = require("multer");
+var httpmsgs = require("http-msgs");
+const {sendJSON} = require("http-msgs/src/200");
+const {Server} = require("http");
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -36,28 +38,43 @@ router.post("/Submit_Data", upload.single("image"), async function (
   res,
   next
 ) {
-  try {
-    await person_detail.Model.create({
+  if (req.body.register) {
+    var checkRegisterd = await person_detail.Model.findOne({
       registerNo: req.body.register,
-      firstName: req.body.first_name,
-      lastName: req.body.last_name,
-      fatherName: req.body.father_name,
-      birthDate: req.body.birthday,
-      qualification: req.body.qualification,
-      gender: req.body.gender,
-      email: req.body.email,
-      phoneNumber: req.body.phone,
-      address: req.body.address,
-
-      img: {
-        data: fs.readFileSync("uploads/" + req.file.filename),
-        contentType: "image/jpeg",
-      },
     });
-    res.render("Add_Person");
-  } catch (err) {
-    res.redirect("error");
-    console.log(err);
+  }
+  if (checkRegisterd) {
+    req.flash("info", "Registered Already !!!");
+
+    res.redirect("/Addlist");
+  } else {
+    try {
+      {
+        await person_detail.Model.create({
+          registerNo: req.body.register,
+          firstName: req.body.first_name,
+          lastName: req.body.last_name,
+          fatherName: req.body.father_name,
+          birthDate: req.body.birthday,
+          qualification: req.body.qualification,
+          gender: req.body.gender,
+          email: req.body.email,
+          phoneNumber: req.body.phone,
+          address: req.body.address,
+
+          img: {
+            data: fs.readFileSync("uploads/" + req.file.filename),
+            contentType: "image/jpeg",
+          },
+          success: "submitted  successfullly",
+        });
+      }
+      console.log("alredy exist");
+      res.render("Add_Person");
+    } catch (err) {
+      res.redirect("error");
+      console.log(err);
+    }
   }
 });
 
@@ -85,7 +102,11 @@ router.get("/updateperson/:id", async function (req, res, next) {
     var updateperson = await person_detail.Model.find({
       _id: req.params.id,
     });
-    res.render("Edit_Person", {updateperson: updateperson});
+
+    // var imagsrc = "data:image/jpeg;base  64," + buf.toString("base64");
+    res.render("Edit_Person", {
+      updateperson: updateperson,
+    });
   } catch (err) {
     console.log(err);
   }
@@ -120,6 +141,26 @@ router.get("/deleteperson/:idd", async function (req, res, next) {
       _id: mongoose.Types.ObjectId(req.params.idd),
     });
     res.redirect("/displaylist");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/images/:id", async function (req, res, next) {
+  try {
+    var updateperson = await person_detail.Model.findOne(
+      {
+        _id: req.params.id,
+      },
+      function (err, result) {
+        console.log(result);
+        res.set("Content-Type", result.contentType);
+
+        res.send(result.img.data);
+      }
+    );
+
+    // var imagsrc = "data:image/jpeg;base  64," + buf.toString("base64");
   } catch (err) {
     console.log(err);
   }

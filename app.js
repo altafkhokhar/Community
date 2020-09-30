@@ -5,13 +5,12 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-var flash = require("connect-flash");
 var session = require("express-session");
 var mongoose = require("mongoose");
-var exphbs = require("express-handlebars");
 var indexRouter = require("./routes/Person");
 var usersRouter = require("./routes/users");
 var bodyParser = require("body-parser");
+var flash = require("connect-flash");
 var app = express();
 var path = require("path");
 require("dotenv/config");
@@ -24,18 +23,6 @@ mongoose.connect(
   }
 );
 
-// // view engine setup
-// var hbs = exphbs.create({
-//   extname:'hbs',
-//   defaultLayout:'main',
-//   layoutsDir:path.join(__dirname,'views/layouts'),
-//   partialsDir:path.join(__dirname,'views/partials'),
-//   helpers:{
-
-//   }
-
-// });
-// app.engine('hbs',hbs.engine);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
@@ -48,13 +35,23 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
-    secret: "keyboard cat",
-    resave: false,
+    secret: "secret",
+    resave: true,
     saveUninitialized: true,
-    cookie: {secure: true},
+    cookie: {maxAge: 60000},
   })
 );
 app.use(flash());
+
+app.use("*", function (req, res, next) {
+  res.locals.success_msg = req.flash("success_msg");
+  console.log(req.flash("success_msg"));
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  res.locals.message = req.flash("info");
+  next();
+});
+
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 

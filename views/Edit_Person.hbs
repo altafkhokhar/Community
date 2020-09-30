@@ -1,120 +1,129 @@
 <html>
-  <head>
+
+<head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
-  </head>
-  <body>
-    <div class="container">
+</head>
+
+<body>
+  <div class="container">
     {{#each updateperson}}
-    <form class="well form-horizontal" action="/updateperson/{{_id}} " method="post"  id="contact_form">
-    <fieldset>
+    <form class="well form-horizontal" action="/updateperson/{{_id}} " method="post" id="contact_form">
+      <fieldset>
 
-<!-- Form Name -->
-<legend><center><h2><b>Update List</b></h2></center></legend><br>
+        <!-- Form Name -->
+        <legend>
+          <center>
+            <h2><b>Update List</b></h2>
+            <img src="/images/{{_id}}" height="100px" width="100px  ">
 
-<!-- Text input-->
+          </center>
+        </legend><br>
 
-<div class="form-group">
-  <label class="col-md-4 control-label">Register No</label>  
-  <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input readonly name="register_No" placeholder="Register No" class="form-control"  type="text" value="{{registerNo}}">
-    </div>
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Register No</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input readonly name="register_No" placeholder="Register No" class="form-control" type="text"
+                value="{{registerNo}}">
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">First Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input name="first_Name" class="form-control" type="text" value="{{firstName}}">
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Last Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input name="last_Name" class="form-control" type="text" value="{{lastName}}">
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Father Name</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input name="father_Name" class="form-control" type="text" value="{{fatherName}}">
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Qualification</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input name="qualification" class="form-control" type="text" value="{{qualification}}">
+            </div>
+          </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label">E-Mail</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+              <input name="email" class="form-control" type="text" value="{{email}}">
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Text input-->
+
+        <div class="form-group">
+          <label class="col-md-4 control-label">Contact No.</label>
+          <div class="col-md-4 inputGroupContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+              <input name="phone_Number" class="form-control" type="number" value="{{phoneNumber}}">
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Button -->
+        <div class="form-group">
+          <label class="col-md-4 control-label"></label>
+          <div class="col-md-4"><br>
+            <button id="submit" name="submit" class="btn btn-primary" value="1">Submit</button>
+
+            <a class="btn btn-default" href="/displaylist" role="button">Cancel</a>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    {{/each}}
   </div>
-</div>
+</body>
 
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >First Name</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="first_Name" class="form-control"  type="text" value="{{firstName}}">
-    </div>
-  </div>
-</div>
-
-
-  
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label">Last Name</label>  
-  <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="last_Name"  class="form-control"  type="text" value="{{lastName}}">
-    </div>
-  </div>
-</div>
-
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Father Name</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="father_Name"  class="form-control"  type="text" value="{{fatherName}}">
-    </div>
-  </div>
-</div>
-
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Qualification</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input name="qualification"  class="form-control"  type="text" value="{{qualification}}">
-    </div>
-  </div>
-</div>
-
-<!-- Text input-->
-       <div class="form-group">
-  <label class="col-md-4 control-label">E-Mail</label>  
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-  <input name="email"  class="form-control"  type="text" value="{{email}}">
-    </div>
-  </div>
-</div>
-
-
-<!-- Text input-->
-       
-<div class="form-group">
-  <label class="col-md-4 control-label">Contact No.</label>  
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-  <input name="phone_Number"  class="form-control" type="number" value="{{phoneNumber}}">
-    </div>
-  </div>
-</div>
-
-
-<!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label"></label>
-  <div class="col-md-4"><br>
-      <button id="submit" name="submit" class="btn btn-primary" value="1">Submit</button>
-   
-<a class="btn btn-default" href="/displaylist" role="button">Cancel</a>
-  </div>
-</div>
-</fieldset>
-</form>
-{{/each}}
-</div>
-  </body>
-  </html>
-  
+</html>
