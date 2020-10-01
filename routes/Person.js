@@ -5,8 +5,6 @@ var person_detail = require("../model/person_detail");
 var mongoose = require("mongoose");
 var fs = require("fs");
 var multer = require("multer");
-var httpmsgs = require("http-msgs");
-const {sendJSON} = require("http-msgs/src/200");
 const {Server} = require("http");
 
 var storage = multer.diskStorage({
@@ -44,11 +42,7 @@ router.post("/Submit_Data", upload.single("image"), async function (
     });
   }
   if (checkRegisterd) {
-<<<<<<< HEAD
-    req.flash("info", "Registered Already !!!");
-=======
     req.flash("info", "Register No. Already Exists!!!");
->>>>>>> 211ab80029af624edb7a22610fd3f4255c0b2ab5
 
     res.redirect("/Addlist");
   } else {
@@ -70,10 +64,6 @@ router.post("/Submit_Data", upload.single("image"), async function (
             data: fs.readFileSync("uploads/" + req.file.filename),
             contentType: "image/jpeg",
           },
-<<<<<<< HEAD
-          success: "submitted  successfullly",
-=======
->>>>>>> 211ab80029af624edb7a22610fd3f4255c0b2ab5
         });
       }
       console.log("alredy exist");
