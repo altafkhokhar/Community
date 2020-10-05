@@ -15,9 +15,13 @@ let schema = new mongoose.Schema({
     type: String,
     default: null,
   },
+  IsActive: {
+    type: Boolean,
+    default: true,
+  },
 });
 
-const loginuser = mongoose.model("Createuser", schema, "Createuser");
+const loginuser = mongoose.model("Users", schema, "Users");
 module.exports = {
   Model: loginuser,
 };
