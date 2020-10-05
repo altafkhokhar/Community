@@ -1,0 +1,17 @@
+/** @format */
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+.login-form {
+  margin-top: 6em;
+}
+.col-form-label {
+  color: black;
+}
+.checkbox {
+  color: black;
+}
+.headerTool {
+  margin-top: -2em;
+  background-color: #b2ad7f;
+}

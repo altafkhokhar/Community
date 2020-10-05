@@ -1,5 +1,4 @@
 /** @format */
-
 var createError = require("http-errors");
 var express = require("express");
 var path = require("path");
@@ -7,13 +6,16 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var session = require("express-session");
 var mongoose = require("mongoose");
-var indexRouter = require("./routes/Person");
-var usersRouter = require("./routes/users");
 var bodyParser = require("body-parser");
 var flash = require("connect-flash");
+var indexRouter = require("./routes/Person");
+var loginuser = require("./routes/loginuser");
+var createuser = require("./routes/signupuser");
+var logoutuser = require("./routes/logoutuser");
+
 var app = express();
-var path = require("path");
-require("dotenv/config");
+
+const auth = require("./helpers/auth");
 
 mongoose.connect(
   "mongodb://localhost:27017/Community", //connect-mongoose
@@ -26,34 +28,47 @@ mongoose.connect(
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
-app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
 app.use(
   session({
-    secret: "secret",
+    secret: "cats",
     resave: true,
     saveUninitialized: true,
-    cookie: {maxAge: 60000},
   })
 );
-app.use(flash());
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  })
+);
 
+app.use(express.static(path.join(__dirname, "public")));
+app.use(flash());
+auth.login(app);
 app.use("*", function (req, res, next) {
-  res.locals.success_msg = req.flash("success_msg");
-  console.log(req.flash("success_msg"));
-  res.locals.error_msg = req.flash("error_msg");
-  res.locals.error = req.flash("error");
+  console.log("session" + req.user);
+
+  res.locals.session = req.user;
+  // console.log(session);
+
   res.locals.message = req.flash("info");
   next();
 });
 
+app.use(function (req, res, next) {
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  next();
+});
+
+app.use("/", createuser);
+app.use("/", loginuser);
+app.use(auth.checkAuth);
 app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use("/", logoutuser);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

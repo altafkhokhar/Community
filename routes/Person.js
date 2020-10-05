@@ -21,7 +21,7 @@ var upload = multer({storage: storage});
 
 // create Dashboard.......
 
-router.get("/", function (req, res, next) {
+router.get("/Dashboard", function (req, res, next) {
   res.render("Dashboard");
 });
 
