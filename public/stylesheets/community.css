@@ -1,10 +1,30 @@
-
-.headerTool {
-    margin-top:-2em;
-    background-color: #b2ad7f
+.bs-example {
+    width: 100%;
+    margin: 0% auto;
 }
 
-.headerText {
-    color: #563f46;
-    font-size: 1.50rem; 
+.container-table100 {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.wrap-table {
+    width: 1300px;
+}
+
+
+.headerTool {
+    background-color :#b2ad7f;
+    margin-top:-2em;
+    
+}
+
+.headerLink {
+    color:black;
+    font-weight:bold;
 }
