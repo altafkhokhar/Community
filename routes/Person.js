@@ -95,8 +95,8 @@ router.get("/displaylist", async function (req, res, next) {
 
 // Update Person...............
 router.get("/updateperson/:id", async function (req, res, next) {
-  try {
-    var updateperson = await person_detail.Model.find({
+    try {
+        var updateperson = await person_detail.Model.findById({
       _id: req.params.id,
     });
 

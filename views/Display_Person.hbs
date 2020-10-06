@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <title> List of person</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
@@ -16,110 +17,131 @@
   <title>Hello, world!</title>
 </head>
 
-<body style="background: linear-gradient( grey,burlywood 100%);">
+<body class="text-gray-500 bg-gray-900 body-font">
+
+  <!--start-->
+
+  <div>
+
+    <div style="background-color: #b2ad7f;">
+      <div class="container mx-auto flex flex-wrap flex-col md:flex-row items-center" style="margin-top:-2em;">
+        <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0" style=" padding-top: 1.5em;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+            viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <span class="ml-3 text-xl" style="">COMMUNITY</span>
+        </a>
+        <nav
+          class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700 	flex flex-wrap items-center text-base justify-center">
+          <a class="mr-3 hover:text-white headerLink" href="/displaylist">List</a>
+          <a class="mr-3 hover:text-white headerLink" href="/AddList">Add</a>
+          <a class="mr-3 hover:text-white headerLink" href="/logout">Logout</a>
 
 
-
-  <div class="bs-example1">
-    <div class="container-table101">
-      <div class="wrap-table101">
-
-        <table class="table table-striped table-dark">
-          <div class="divv" style="text-align: center;  background-color: burlywood; height: 50px;padding-top: 10px;">
-            <h3>Persons List</h3>
-          </div>
-
-
-
-          <thead class="thead-dark " style="text-align: center;">
-            <tr>
-
-              <th>Ragister No</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Father Name</th>
-              <th>Qualification</th>
-              <th>Phone Number</th>
-              <th>Email</th>
-              <th>Edit</th>
-              <th>delete</th>
-            </tr>
-          </thead>
-          <tbody style="text-align: center;">
-            {{#each displayperson}}
-            <tr>
-
-              <td>{{registerNo}}</td>
-              <td>{{firstName}}</td>
-              <td>{{lastName}}</td>
-              <td>{{fatherName}}</td>
-              <td>{{qualification}}</td>
-              <td>{{phoneNumber}}</td>
-
-              <td>{{email}}</td>
-
-              <td>
-
-                <a href="/updateperson/{{_id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-              </td>
-              <td>
-
-                <a><i class="fa fa-trash" data-toggle="modal" data-target="#exampleModal" aria-hidden="true"></i></a>
-              </td>
-
-            </tr>
-
-
-            <!-- Modal -->
+        </nav>
 
       </div>
     </div>
+  </div>
 
-    {{/each}}
-    <tr>
-      <td colspan="9" style="background-color:burlywood;">
 
-      </td>
+  <!--end-->
+  <!--header ends here-->
+  <div class="page-wrapper  body-font ">
+    <div class="card card-4">
+      <div class="card-body" style="background-color: #EAE6DA">
+        <h3 class="formHead" style="text-align: center;color:rgb(31, 15, 15); font-size:40px; padding-bottom: 15px;" ;>
+          Persons List</h3>
 
-    </tr>
-    </tbody>
-    </table>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-      </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous"></script>
+        <div class="bs-example">
+          <div class="container-table100">
+            <div class="wrap-table100">
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Are you sure ?
-          </div>
-          <div class="modal-footer">
-            <a href="/deleteperson/{{displayperson.value}}"><button onclick="function({{_id}})" type="button"
-                class="btn btn-secondary">Delete</button></a>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+
+              <table class="table table-striped table-dark" style="text-align: center;">
+
+                <thead>
+                  <tr>
+                    <th>Register No.</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Father Name</th>
+                    <th>Qualification</th>
+                    <th>Mobile No.</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
+
+
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each displayperson}}
+                  <tr>
+                    <td>{{registerNo}}</td>
+                    <td>{{firstName}}</td>
+                    <td>{{lastName}}</td>
+                    <td>{{fatherName}}</td>
+                    <td>{{qualification}}</td>
+                    <td>{{phoneNumber}}</td>
+                    <td>{{email}}</td>
+                    <td>
+                      <a href="/updateperson/{{_id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    </td>
+                    <td>
+                      <a><i data-id="{{_id}}" onclick="deleteItem(this)" class="fa fa-trash" data-toggle="modal"
+                          data-target="#exampleModal" aria-hidden="true"></i></a>
+                    </td>
+                  </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <script>
-          function(_id) {
+  </div>
 
-          }
-        </script>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure ?
+        </div>
+        <div class="modal-footer">
+          <a id="ahreTobeDelete" href="/deleteperson/{{_id}}"><button type="button"
+              class="btn btn-secondary">Delete</button></a>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function deleteItem(iTobeDelete) {
+      var id = iTobeDelete.getAttribute("data-id");
+      var modal = document.getElementById('exampleModal');
+
+      var ahreTobeDelete = document.getElementById('ahreTobeDelete');
+      ahreTobeDelete.href = "/deleteperson/" + id;
+      modal.style.display = "none";
+    }
+  </script>
 </body>
+
+
 
 </html>
