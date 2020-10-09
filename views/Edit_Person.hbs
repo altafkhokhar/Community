@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    .  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css" />
+    .
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.4.6/tailwind.min.css" />
     <link rel="stylesheet" href="/stylesheets/community.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"></script>
@@ -17,13 +18,14 @@
         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
             <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0" href="/">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
-                     stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-                     viewBox="0 0 24 24">
+                    stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+                    viewBox="0 0 24 24">
                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                 </svg>
                 <span class="ml-3 text-xl">COMMUNITY</span>
             </a>
-            <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700 	flex flex-wrap items-center text-base justify-center">
+            <nav
+                class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-700 	flex flex-wrap items-center text-base justify-center">
                 <a class="mr-5 hover:text-white headerLink" href="/displaylist">List</a>
                 <a class="mr-5 hover:text-white headerLink" href="/AddList">Add</a>
                 <a class="mr-5 hover:text-white headerLink" href="/logout">Logout</a>
@@ -36,18 +38,45 @@
     <!--end-->
 
     <div class="container">
-       
+
+        <form id="formimage" action="/updateimage/{{updateperson._id}}" method="post" enctype="multipart/form-data">
+
+
+            <center>
+                <h2><b>Update Person</b></h2>
+                <img style="border-radius: 50%;" src="/images/{{updateperson._id}}" height="100px" width="100px  ">
+
+            </center>
+
+
+
+            <div class="image-upload">
+
+                <label for="file-input">
+                    <svg width="3em" height="2em" viewBox="0 0 16 16" class="bi bi-images" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M12.002 4h-10a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1zm-10-1a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-10zm4 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+                        <path fill-rule="evenodd"
+                            d="M4 2h10a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1v1a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2h1a1 1 0 0 1 1-1z" />
+                    </svg>
+                </label>
+
+
+
+                <input id="file-input" type="file" name="updateimage" />
+                {{!-- <input type='submit' id="imagesubmit" name='upload_btn'> --}}
+
+            </div>
+        </form>
+
+
+
         <form class="well form-horizontal" action="/updateperson/{{updateperson._id}} " method="post" id="contact_form">
             <fieldset>
 
                 <!-- Form Name -->
-                <legend>
-                    <center>
-                        <h2><b>Update Person</b></h2>
-                        <img src="/images/{{updateperson._id}}" height="100px" width="100px  ">
-
-                    </center>
-                </legend><br>
+                <br>
 
                 <!-- Text input-->
 
@@ -56,8 +85,8 @@
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input readonly name="register_No" placeholder="Register No" class="form-control" type="text"
-                                   value="{{updateperson.registerNo}}">
+                            <input readonly name="register_No" placeholder="Register No" class="form-control"
+                                type="text" value="{{updateperson.registerNo}}">
                         </div>
                     </div>
                 </div>
@@ -69,7 +98,8 @@
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input name="first_Name" class="form-control" type="text" value="{{updateperson.firstName}}">
+                            <input name="first_Name" class="form-control" type="text"
+                                value="{{updateperson.firstName}}">
                         </div>
                     </div>
                 </div>
@@ -95,7 +125,8 @@
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input name="father_Name" class="form-control" type="text" value="{{updateperson.fatherName}}">
+                            <input name="father_Name" class="form-control" type="text"
+                                value="{{updateperson.fatherName}}">
                         </div>
                     </div>
                 </div>
@@ -107,7 +138,8 @@
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                            <input name="qualification" class="form-control" type="text" value="{{updateperson.qualification}}">
+                            <input name="qualification" class="form-control" type="text"
+                                value="{{updateperson.qualification}}">
                         </div>
                     </div>
                 </div>
@@ -131,7 +163,8 @@
                     <div class="col-md-4 inputGroupContainer">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                            <input name="phone_Number" class="form-control" type="number" value="{{updateperson.phoneNumber}}">
+                            <input name="phone_Number" class="form-control" type="number"
+                                value="{{updateperson.phoneNumber}}">
                         </div>
                     </div>
                 </div>
@@ -153,14 +186,26 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+        </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-            crossorigin="anonymous"></script>
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-            crossorigin="anonymous"></script>
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#file-input").change(function () {
+
+
+                alert("1");
+                $("#formimage").submit();
+                alert("2");
+            });
+        });
+    </script>
 </body>
 
 </html>

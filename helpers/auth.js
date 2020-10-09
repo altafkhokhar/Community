@@ -46,14 +46,14 @@ module.exports = {
     );
 
     passport.serializeUser(function (user, done) {
-      console.log("ss" + user);
+      // console.log("ss" + user);
       done(null, user.id);
     });
 
     passport.deserializeUser(function (id, done) {
-      console.log("deserializeUser");
+      // console.log("deserializeUser");
       loginuser.Model.findById(id, function (err, user) {
-        console.log(user);
+        // console.log(user);
         done(null, user);
       });
     });

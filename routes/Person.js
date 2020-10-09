@@ -82,11 +82,14 @@ router.get("/displaylist", async function (req, res, next) {
     var all_person = {};
 
     person_detail.Model.find({}, function (err, persons) {
+      // console.log("hiii" + persons);
       persons.forEach(function (oneperson) {
+        // console.log("hello" + oneperson);
         all_person[oneperson._id] = oneperson;
+        // console.log("id==" + all_person._id);
       });
     });
-    console.log(all_person);
+    // console.log(all_person);
     res.render("Display_Person", {displayperson: all_person});
   } catch (err) {
     console.log(err);
@@ -95,8 +98,8 @@ router.get("/displaylist", async function (req, res, next) {
 
 // Update Person...............
 router.get("/updateperson/:id", async function (req, res, next) {
-    try {
-        var updateperson = await person_detail.Model.findById({
+  try {
+    var updateperson = await person_detail.Model.findById({
       _id: req.params.id,
     });
 
@@ -130,12 +133,12 @@ router.post("/updateperson/:id", async function (req, res, next) {
 });
 
 // Delete Person......
-router.get("/deleteperson/:idd", async function (req, res, next) {
+router.get("/deleteperson/:id", async function (req, res, next) {
   console.log("indelete");
 
   try {
     await person_detail.Model.deleteOne({
-      _id: mongoose.Types.ObjectId(req.params.idd),
+      _id: mongoose.Types.ObjectId(req.params.id),
     });
     res.redirect("/displaylist");
   } catch (err) {
@@ -150,7 +153,7 @@ router.get("/images/:id", async function (req, res, next) {
         _id: req.params.id,
       },
       function (err, result) {
-        console.log(result);
+        // console.log(result);
         res.set("Content-Type", result.contentType);
 
         res.send(result.img.data);
@@ -161,5 +164,29 @@ router.get("/images/:id", async function (req, res, next) {
   } catch (err) {
     console.log(err);
   }
+});
+router.post("/updateimage/:id", upload.single("updateimage"), async function (
+  req,
+  res,
+  next
+) {
+  console.log("hiiiiiiiiiiiiiiiii" + person_detail);
+  console.log(("fillllleeeeeee"+req.file));
+  await person_detail.Model.updateOne(
+    {
+      _id: req.params.id,
+    },
+
+    {
+      $set: {
+        img: {
+          data: fs.readFileSync("uploads/" + req.file.filename),
+          contentType: "image/jpeg",
+        },
+      },
+    }
+  );
+  
+  res.redirect("/displaylist");
 });
 module.exports = router;

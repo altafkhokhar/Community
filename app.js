@@ -48,7 +48,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(flash());
 auth.login(app);
 app.use("*", function (req, res, next) {
-  console.log("session" + req.user);
+  // console.log("session" + req.user);
 
   res.locals.session = req.user;
   // console.log(session);
